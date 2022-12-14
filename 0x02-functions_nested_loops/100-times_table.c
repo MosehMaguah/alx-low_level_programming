@@ -31,14 +31,14 @@ void print_times_table(int n)
 			else if (j < 100)
 			{
 				_putchar(' ');
-				_putchar('0' + rep / 10);
-				_putchar('0' + rep % 10);
+				_putchar('0' + j / 10);
+				_putchar('0' + j % 10);
 			}
 			else
 			{
-				_putchar('0' + rep / 100);
-				_putchar('0' + (rep - 100) / 10);
-				_putchar('0' + rep % 10);
+				_putchar('0' + j / 100);
+				_putchar('0' + (j - 100) / 10);
+				_putchar('0' + j % 10);
 			}
 			if (k < n)
 			{

@@ -13,7 +13,7 @@ void print_times_table(int n)
 		return;
 	}
 
-		while (a <= n)
+		while (i <= n)
 		{
 			for (k = 0; k <= n; k++)
 			{

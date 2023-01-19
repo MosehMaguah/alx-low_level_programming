@@ -22,7 +22,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	}
 
 	arg1 = atoi(argv[1]);
-	arg22 = atoi(argv[3]);
+	arg2 = atoi(argv[3]);
 
 	func = get_op_func(argv[2]);
 

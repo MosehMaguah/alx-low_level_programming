@@ -1,1 +1,1 @@
-we are coding c language,yay
+readme and my prototypes

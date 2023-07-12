@@ -1,47 +1,45 @@
 #include "search_algos.h"
 
 /**
- * jump_list - Funtction that jump searches on singly linked list
- * @list: pointer to head node
- * @size: list size
- * @value: value to search for
+ * linear_skip - Function that searches for a value in a skip list
  *
- * Return: the node found or NULL
+ * @list: given list
+ * @value: value to search for
+ * Return: index of the number
  */
-listint_t *jump_list(listint_t *list, size_t size, int value)
+skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	size_t i = 0, j = sqrt(size), k = 0, last_j = 0;
-	listint_t *last = list;
+	skiplist_t *go;
 
-	if (!list)
+	if (list == NULL)
 		return (NULL);
 
-	while (list->n < value)
+	go = list;
+
+	do {
+		list = go;
+		go = go->express;
+		printf("Value checked at index ");
+		printf("[%d] = [%d]\n", (int)go->index, go->n);
+	} while (go->express && go->n < value);
+
+	if (go->express == NULL)
 	{
-		for (last_j = i, last = list, k = 0; list->next && k < j; k++)
-		{
-			list = list->next;
-			i++;
-		}
-		printf("Value checked at index [%lu] = [%d]\n", i, list->n);
-		if (!list->next)
-			break;
+		list = go;
+		while (go->next)
+			go = go->next;
 	}
 
-	if (!list->next)
-		j = last_j;
-	else
-		j = i >= j ? i - j : 0;
-	printf("Value found between indexes [%lu] and [%lu]\n", j, i);
-	i = i >= size ? size - 1 : i;
-	list = last;
-	while (list)
+	printf("Value found between indexes ");
+	printf("[%d] and [%d]\n", (int)list->index, (int)go->index);
+
+	while (list != go->next)
 	{
-		printf("Value checked at index [%lu] = [%d]\n", j, list->n);
+		printf("Value checked at index [%d] = [%d]\n", (int)list->index, list->n);
 		if (list->n == value)
 			return (list);
-		j++;
 		list = list->next;
 	}
+
 	return (NULL);
 }
